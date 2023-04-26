@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AvatarCard from '../AvatarCard/AvatarCard';
 import { BiDownArrow } from 'react-icons/bi';
+import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
 
 const AllAvatar = () => {
-    let arr = [1, 2, 3, 4, 5, 6]
+    // let arr = [1, 2, 3, 4, 5, 6]
+    const [wishlist, setWishlist] = useState([]);
+    const [avatars, setAvatars] = useState([])
+    useEffect(() => {
+        fetch('./avatar.json')
+            .then(res => res.json())
+            .then(data => setAvatars(data))
+    }, [])
+
     return (
         <div className='flex flex-row my-5 mx-5'>
             <div className='w-1/5'>
@@ -29,14 +38,14 @@ const AllAvatar = () => {
                 <div className='grid grid-cols-4 gap-2'>
 
                     {
-                        arr.map(item => <AvatarCard key={item}></AvatarCard>)
+                        avatars.map(item => <AvatarCard key={item._id} item={item} wishlist={wishlist} setWishlist={setWishlist}></AvatarCard>)
                     }
                 </div>
                 <div className="btn-group flex justify-center my-2">
-                    <button className="btn btn-outline ">«</button>
-                    <button className="btn btn-outline btn-active">1</button>
+                    <button className="mx-2"> <FaLessThan /></button>
+                    <button className="btn btn-outline ">1</button>
                     <button className="btn btn-outline">2</button>
-                    <button className="btn btn-outline">»</button>
+                    <button className="mx-2"> <FaGreaterThan /></button>
                 </div>
 
             </div>
