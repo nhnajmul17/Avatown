@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import avatar from '../../Assets/images/Avatar Pictures/VRC image A(F).png'
 import { AiFillHeart } from 'react-icons/ai'
 import { FiShare, FiCopy } from 'react-icons/fi'
 // https://i.ibb.co/khbWg3S/VRC-image-O-F.png
 
 const AvatarCard = ({ wishlist, setWishlist, item }) => {
+    const [copied, setCopied] = useState(false);
 
-    const { avatarName, picture, _id, rating, likes, price, sellerName } = item
+    const { picture, _id, rating, likes, price, sellerName } = item
 
     const handleWishlist = (itemId) => {
         if (wishlist.includes(itemId)) {
@@ -15,6 +16,14 @@ const AvatarCard = ({ wishlist, setWishlist, item }) => {
             setWishlist([...wishlist, itemId]);
         }
     };
+
+    const handleCopy = () => {
+        setCopied(true);
+        setTimeout(() => {
+            setCopied(false);
+        }, 500);
+    };
+
     return (
         <div className="card bg-base-100 shadow-xl">
             <figure><img className='' src={picture} alt="Avatar" /></figure>
@@ -46,12 +55,16 @@ const AvatarCard = ({ wishlist, setWishlist, item }) => {
                 <span className='text-xs font-medium'>Auto upload Service ready. you can use this avatar within 24 hours.</span>
 
                 <div className="cursor-pointer dropdown dropdown-top dropdown-end">
+
                     <label tabIndex={0} className="cursor-pointer">
                         <FiShare />
                     </label>
-
                     <div tabIndex={0} className="mt-3 w-28 card card-compact dropdown-content bg-base-100 shadow">
-                        <div className='flex flex-row justify-center tooltip' data-tip="copied"><FiCopy /> <span className='mx-2 text-xs '> Copy link</span></div>
+                        {copied ? <p className='text-xs text-center bg-base-200 font-bold' > Copied</p> : <div className='flex flex-row justify-center'>
+                            <FiCopy />
+                            <span className='mx-2 text-xs' onClick={handleCopy}> Copy link</span>
+                        </div>}
+
                     </div>
 
                 </div>

@@ -4,7 +4,6 @@ import { BiDownArrow } from 'react-icons/bi';
 import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
 
 const AllAvatar = () => {
-    // let arr = [1, 2, 3, 4, 5, 6]
     const [wishlist, setWishlist] = useState([]);
     const [avatars, setAvatars] = useState([])
     useEffect(() => {
