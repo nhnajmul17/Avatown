@@ -1,13 +1,51 @@
 import React from 'react';
 
 
-const Filters = () => {
+const Filters = ({ Filters, setFilters, gender, setGender }) => {
+
+    const handleFilters = (item) => {
+        if (Filters.includes(item)) {
+            setFilters(Filters.filter((id) => id !== item));
+        }
+        else if (item === "Male") {
+            const newfilter = Filters.filter((id) => id !== "Female");
+            setFilters([...newfilter, item])
+        }
+        else if (item === "Female") {
+            const newfilter = Filters.filter((id) => id !== "Male");
+            setFilters([...newfilter, item])
+        }
+        else {
+            setFilters([...Filters, item]);
+        }
+    };
+
+    const handleGender = (gen) => {
+        handleFilters(gen)
+        if (gender.includes(gen)) {
+
+            setGender(gender.filter((data) => data !== gen));
+        }
+        else {
+            setGender([gen]);
+        }
+    }
     return (
         <div>
             <div>
                 <p className='font-bold'>Category</p>
                 <ul className='ml-2'>
-                    <li>Full avatar</li>
+                    <div tabIndex={0} className="collapse">
+                        <li onClick={() => handleFilters("Full avatar")} className="collapse-title">
+                            Full avatar
+                        </li>
+                        <div className="collapse-content">
+                            <li onClick={() => handleFilters("Human Based")}>Human Based</li>
+                            <li className={`${Filters.includes("Human Based") ? "" : "hidden"}`} onClick={() => handleGender("Male")}>Male</li>
+                            <li className={`${Filters.includes("Human Based") ? "" : "hidden"}`} onClick={() => handleGender("Female")}>Female</li>
+                            <li>Robot Based</li>
+                        </div>
+                    </div>
                     <li>Others</li>
                 </ul>
             </div>
