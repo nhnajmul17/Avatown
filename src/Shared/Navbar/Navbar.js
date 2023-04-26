@@ -21,6 +21,7 @@ const Navbar = () => {
                 <div className="form-control">
 
                     <input type="text" placeholder="" className="input input-bordered rounded-md w-96 h-7" />
+
                 </div>
                 <button className="btn btn-ghost bg-gray-700 rounded-xl">
                     <div className="indicator text-white">

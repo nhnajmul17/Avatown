@@ -1,25 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import AvatarCard from '../AvatarCard/AvatarCard';
 import { BiDownArrow } from 'react-icons/bi';
-import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
+
+import Filters from '../Filters/Filters';
+import Pagination from '../Pagination/Pagination';
 
 const AllAvatar = () => {
     const [wishlist, setWishlist] = useState([]);
     const [avatars, setAvatars] = useState([])
+    const [filters, setFilters] = useState(['Full avatar', 'Male', 'Female'])
+    const [currentpage, setCurrentPage] = useState(1);
+    const [avatarPerPage] = useState(8);
     useEffect(() => {
         fetch('./avatar.json')
             .then(res => res.json())
             .then(data => setAvatars(data))
     }, [])
 
+    const lastitem = currentpage * avatarPerPage
+    const firstItem = lastitem - avatarPerPage
+    const currentAvatar = avatars.slice(firstItem, lastitem)
+
+
     return (
         <div className='flex flex-row my-5 mx-5'>
-            <div className='w-1/5'>
-
+            <div className='w-1/6'>
+                <Filters setFilters={setFilters}></Filters>
             </div>
-            <div className=' w-4/5 '>
+            <div className=' w-5/6 '>
                 <div className='flex flex-row justify-between'>
-                    <h3 className='text-2xl font-medium'>All Items</h3>
+                    {filters.length ? <div className="text-sm breadcrumbs">
+                        <ul>{
+                            filters.map((item, i) => <li key={i}>{item}</li>)
+                        }
+                        </ul>
+                    </div> : <h3 className='text-2xl font-medium'>All Items</h3>}
+
                     <div className="dropdown dropdown-bottom">
                         <label tabIndex={0} className="">
                             <p className="badge badge-outline font-medium">Sort by Featured <BiDownArrow /></p>
@@ -35,17 +51,11 @@ const AllAvatar = () => {
                     </div>
                 </div>
                 <div className='grid grid-cols-4 gap-2'>
-
                     {
-                        avatars.map(item => <AvatarCard key={item._id} item={item} wishlist={wishlist} setWishlist={setWishlist}></AvatarCard>)
+                        currentAvatar.map(item => <AvatarCard key={item._id} item={item} wishlist={wishlist} setWishlist={setWishlist}></AvatarCard>)
                     }
                 </div>
-                <div className="btn-group flex justify-center my-2">
-                    <button className="mx-2"> <FaLessThan /></button>
-                    <button className="btn btn-outline ">1</button>
-                    <button className="btn btn-outline">2</button>
-                    <button className="mx-2"> <FaGreaterThan /></button>
-                </div>
+                <Pagination avatarPerPage={avatarPerPage} totalavatar={avatars.length} currentpage={currentpage} setCurrentPage={setCurrentPage}></Pagination>
 
             </div>
         </div>

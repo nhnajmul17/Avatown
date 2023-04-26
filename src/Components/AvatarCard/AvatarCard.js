@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import avatar from '../../Assets/images/Avatar Pictures/VRC image A(F).png'
 import { AiFillHeart } from 'react-icons/ai'
 import { FiShare, FiCopy } from 'react-icons/fi'
-// https://i.ibb.co/khbWg3S/VRC-image-O-F.png
+import { BsCartPlus } from 'react-icons/bs'
+import './AvatarCard.css'
+
 
 const AvatarCard = ({ wishlist, setWishlist, item }) => {
     const [copied, setCopied] = useState(false);
@@ -21,12 +23,17 @@ const AvatarCard = ({ wishlist, setWishlist, item }) => {
         setCopied(true);
         setTimeout(() => {
             setCopied(false);
-        }, 500);
+        }, 250);
     };
 
     return (
         <div className="card bg-base-100 shadow-xl">
-            <figure><img className='' src={picture} alt="Avatar" /></figure>
+            <img className='' src={picture} alt="Avatar" />
+            <div className='flex flex-row justify-center items-center cart bg-blue-500 rounded-md text-white text-sm p-1 cursor-pointer'>
+                <BsCartPlus />
+                <p className='mx-1 font-bold'>Add</p>
+            </div>
+
             <h1 className='p-2 font-medium'>Avatar Name "Avatown" nice Origibal avatar of avatown</h1>
             <div className='flex flex-row justify-between p-2'>
                 <div className="rating rating-xs items-center">
