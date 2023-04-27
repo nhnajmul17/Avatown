@@ -24,8 +24,10 @@ const Item = () => {
                     </ul>
                 </div>
             </div>
-            <div className="py-5 card card-side bg-base-100 ">
-                <img className='w-1/4 h-2/4' src={avatarData[0]?.picture} alt="Movie" />
+            <div className="flex lg:flex-row flex-col  py-5 card card-side bg-base-100 ">
+                <div className='md:place-items-center w-2/4 h-3/4'>
+                    <img className='' src={avatarData[0]?.picture} alt="Avatar" />
+                </div>
                 <div className="px-5">
                     <h2 className="card-title text-4xl">{avatarData[0]?.avatarName}</h2>
                     <p className='text-base'>Created By: <span className='font-medium text-gray-400'>{avatarData[0]?.sellerName}</span></p>
