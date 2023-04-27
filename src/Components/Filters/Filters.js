@@ -4,8 +4,11 @@ import React from 'react';
 const Filters = ({ Filters, setFilters, gender, setGender }) => {
 
     const handleFilters = (item) => {
-        if (Filters.includes(item)) {
-            setFilters(Filters.filter((id) => id !== item));
+        if (Filters.includes(item) && (item === 'Full avatar')) {
+            // setFilters(Filters.filter((id) => id !== item));
+            setGender([])
+            setFilters([])
+
         }
         else if (item === "Male") {
             const newfilter = Filters.filter((id) => id !== "Female");
@@ -35,17 +38,17 @@ const Filters = ({ Filters, setFilters, gender, setGender }) => {
             <div>
                 <p className='font-bold'>Category</p>
                 <ul className='ml-2'>
-                    <div tabIndex={0} className="collapse">
-                        <li onClick={() => handleFilters("Full avatar")} className="collapse-title">
-                            Full avatar
-                        </li>
-                        <div className="collapse-content">
-                            <li onClick={() => handleFilters("Human Based")}>Human Based</li>
-                            <li className={`${Filters.includes("Human Based") ? "" : "hidden"}`} onClick={() => handleGender("Male")}>Male</li>
-                            <li className={`${Filters.includes("Human Based") ? "" : "hidden"}`} onClick={() => handleGender("Female")}>Female</li>
-                            <li>Robot Based</li>
-                        </div>
-                    </div>
+                    {/* <div tabIndex={0} className="collapse"> */}
+                    <li onClick={() => handleFilters("Full avatar")} >
+                        Full avatar
+                    </li>
+                    {/* <div className="collapse-content"> */}
+                    <li className={`${Filters.includes("Full avatar") ? "" : "hidden"} font-bold`} onClick={() => handleFilters("Human Based")}>Human Based</li>
+                    <li className={`${Filters.includes("Human Based") ? "" : "hidden"} text-sm font-medium`} onClick={() => handleGender("Male")}>Male</li>
+                    <li className={`${Filters.includes("Human Based") ? "" : "hidden"} text-sm font-medium`} onClick={() => handleGender("Female")}>Female</li>
+                    <li className={`${Filters.includes("Full avatar") ? "" : "hidden"} font-bold`} >Robot Based</li>
+                    {/* </div>
+                    </div> */}
                     <li>Others</li>
                 </ul>
             </div>

@@ -4,6 +4,7 @@ import { AiFillHeart } from 'react-icons/ai'
 import { FiShare, FiCopy } from 'react-icons/fi'
 import { BsCartPlus } from 'react-icons/bs'
 import './AvatarCard.css'
+import { Link } from 'react-router-dom';
 
 
 const AvatarCard = ({ wishlist, setWishlist, item }) => {
@@ -28,7 +29,7 @@ const AvatarCard = ({ wishlist, setWishlist, item }) => {
 
     return (
         <div className="card bg-base-100 shadow-xl">
-            <img className='' src={picture} alt="Avatar" />
+            <Link to={`/avatardetails/${_id}`}><img className='' src={picture} alt="Avatar" /></Link>
             <div className='flex flex-row justify-center items-center cart bg-blue-500 rounded-md text-white text-sm p-1 cursor-pointer'>
                 <BsCartPlus />
                 <p className='mx-1 font-bold'>Add</p>

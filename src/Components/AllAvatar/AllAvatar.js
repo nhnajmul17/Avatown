@@ -46,10 +46,10 @@ const AllAvatar = () => {
 
     return (
         <div className='flex flex-row my-5 mx-5'>
-            <div className='w-1/6'>
+            <div className='lg:w-1/6'>
                 <Filters setFilters={setFilters} Filters={filters} setGender={setGender} gender={gender}></Filters>
             </div>
-            <div className=' w-5/6 '>
+            <div className=' lg:w-5/6 '>
                 <div className='flex flex-row justify-between'>
                     {
                         filters.length ? <div className="text-sm breadcrumbs">
@@ -71,7 +71,7 @@ const AllAvatar = () => {
                         </ul>
                     </div>
                 </div>
-                <div className='grid grid-cols-4 gap-2'>
+                <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2'>
                     {content}
 
                     {/* {
