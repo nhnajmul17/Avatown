@@ -2,14 +2,17 @@ import React from 'react';
 
 import userImage from '../../Assets/images/User.png'
 import logo from '../../Assets/images/logo.png'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <div className="navbar w-full bg-gradient-to-r from-purple-900 to-purple-600">
             <div className="flex-1 ">
-                <div >
-                    <img className=" rounded-xl h-16 w-52" src={logo} alt="logo" />
-                </div>
+                <Link to='/'>
+                    <div >
+                        <img className=" rounded-xl h-16 w-52" src={logo} alt="logo" />
+                    </div>
+                </Link>
             </div>
             <div className="flex-auto">
                 <div className='text-white text-2xl font-medium' >

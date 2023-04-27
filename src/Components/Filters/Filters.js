@@ -10,6 +10,9 @@ const Filters = ({ Filters, setFilters, gender, setGender }) => {
             setFilters([])
 
         }
+        else if (Filters.includes(item)) {
+            setFilters(Filters.filter((id) => id !== item));
+        }
         else if (item === "Male") {
             const newfilter = Filters.filter((id) => id !== "Female");
             setFilters([...newfilter, item])
@@ -39,13 +42,13 @@ const Filters = ({ Filters, setFilters, gender, setGender }) => {
                 <p className='font-bold'>Category</p>
                 <ul className='ml-2'>
                     {/* <div tabIndex={0} className="collapse"> */}
-                    <li onClick={() => handleFilters("Full avatar")} >
+                    <li className='cursor-pointer' onClick={() => handleFilters("Full avatar")} >
                         Full avatar
                     </li>
                     {/* <div className="collapse-content"> */}
-                    <li className={`${Filters.includes("Full avatar") ? "" : "hidden"} font-bold`} onClick={() => handleFilters("Human Based")}>Human Based</li>
-                    <li className={`${Filters.includes("Human Based") ? "" : "hidden"} text-sm font-medium`} onClick={() => handleGender("Male")}>Male</li>
-                    <li className={`${Filters.includes("Human Based") ? "" : "hidden"} text-sm font-medium`} onClick={() => handleGender("Female")}>Female</li>
+                    <li className={`${Filters.includes("Full avatar") ? "" : "hidden"} font-bold cursor-pointer`} onClick={() => handleFilters("Human Based")}>Human Based</li>
+                    <li className={`${Filters.includes("Human Based") ? "" : "hidden"} text-sm font-medium cursor-pointer`} onClick={() => handleGender("Male")}>Male</li>
+                    <li className={`${Filters.includes("Human Based") ? "" : "hidden"} text-sm font-medium cursor-pointer`} onClick={() => handleGender("Female")}>Female</li>
                     <li className={`${Filters.includes("Full avatar") ? "" : "hidden"} font-bold`} >Robot Based</li>
                     {/* </div>
                     </div> */}
