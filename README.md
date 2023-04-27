@@ -1,3 +1,13 @@
+
+# Avatown
+Clone From
+https://github.com/nhnajmul17/Avatown.git
+
+* After Clone the repo run npm i command 
+* "npm start" command will start the local server.
+* In Home directory will show the market page 
+* Clicking on the Avatar Image will redirect to that Avatar Details (item page) Page
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

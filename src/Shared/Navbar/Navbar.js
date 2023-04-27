@@ -15,10 +15,11 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="flex-auto">
-                <div className='text-white text-2xl font-medium' >
+                <Link to='/'> <div className='text-white text-2xl font-medium' >
                     <p>Go to Marketpage</p>
                     <hr className="h-px bg-white-700"></hr>
                 </div>
+                </Link>
             </div>
             <div className="flex-none gap-2">
                 <div className="form-control">
